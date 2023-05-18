@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors Lizard Spock</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <script defer src="/js/scripts.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.9.3/tsparticles.confetti.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <nav>
+      <div data-nav-reset class="navButtonOuter" title="Reset">
+        <i
+          class="fa fa-undo navButtonInner"
+          id="resetButton"
+          aria-hidden="true"
+        ></i>
+      </div>
+
+      <div data-nav-rules class="navButtonOuter" title="How To Play">
+        <i class="fa fa-question navButtonInner" aria-hidden="true"></i>
+      </div>
+
+      <div data-nav-about class="navButtonOuter" title="Info">
+        <i class="fa fa-exclamation navButtonInner" aria-hidden="true"></i>
+      </div>
+    </nav>
+
+    <header>
+      <h1 id="headerText">Rock Paper Scissors Lizard Spock</h1>
+    </header>
+
+    <dialog id="rulesOverlay" data-rules-overlay>
+      <h2>Rules:</h2>
+      <div id="rules-contents">
+        <img id="rulesDiagram" src="/images/rules-diagram.png" />
+        <div id="rulesText">
+          <p>
+            Scissors cuts Paper, Paper covers Rock, Rock crushes Lizard, Lizard
+            poisons Spock, Spock smashes Scissors, Scissors decapitates Lizard,
+            Lizard eats Paper, Paper disproves Spock, Spock vaporizes Rock, and,
+            as it always has, Rock crushes Scissors
+          </p>
+          <p>~Dr Sheldon Cooper</p>
+        </div>
+      </div>
+      <button id="rulesClose" data-rules-close>Close</button>
+    </dialog>
+
+    <main>
+      <section id="menuPanel">
+        <div id="buttonsPanel">
+          <h3>Choose your move:</h3>
+          <div data-rock class="selectButton">Rock</div>
+          <div data-paper class="selectButton">Paper</div>
+          <div data-scissors class="selectButton">Scissors</div>
+          <div data-lizard class="selectButton">Lizard</div>
+          <div data-spock class="selectButton">Spock</div>
+        </div>
+        <h3>Status:</h3>
+        <div data-status id="status">Waiting for move...</div>
+      </section>
+
+      <section id="player1Panel" class="playerPanel">
+        <div class="selection" id="player1Selection">
+          <img
+            data-p1-selected-image
+            class="selectedImages"
+            src="/images/p1starting.png"
+            height="200"
+          />
+        </div>
+
+        <div class="scoreBoard">
+          <h2 class="playerHeading">Player 1 (you)</h2>
+          <p class="scoreHeading">Score:</p>
+          <p class="scoreValue" id="player1Score"></p>
+        </div>
+      </section>
+
+      <section id="player2Panel" class="playerPanel">
+        <div class="selection" id="player2Selection">
+          <img
+            data-p2-selected-image
+            class="selectedImages"
+            src="/images/p2starting.png"
+            height="200"
+          />
+        </div>
+
+        <div class="scoreBoard">
+          <h2 class="playerHeading">Player 2 (computer)</h2>
+          <p class="scoreHeading">Score:</p>
+          <p class="scoreValue" id="player2Score"></p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
