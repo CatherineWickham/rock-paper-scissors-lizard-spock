@@ -75,13 +75,14 @@ main {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  width: 40%;
 }
 
 .selectButton {
   background: D9D9D9;
   color: rgb(0, 0, 0);
   padding: 3%;
-  width: 80%;
+  width: 100%;
   cursor: pointer;
   background: #D9D9D9;
   border-radius: 40px 40px 40px 40px;
@@ -93,6 +94,7 @@ main {
   background: #FFC700;
   border-radius: 40px 40px 40px 40px; 
   padding: 1rem;
+  width: 40%;
 }
 
 /* Player panels styling */
@@ -137,15 +139,15 @@ main {
 @keyframes win {
   0% {
     transform: scale(1);
-    filter: drop-shadow(0 0 0rem rgb(44, 44, 44));
+    filter: drop-shadow(0 0 0rem rgb(31, 31, 31));
   }
   50% {
       transform: scale(1.2);
-      filter: drop-shadow(0 0 2rem rgb(44, 44, 44));
+      filter: drop-shadow(0 0 2rem rgb(31, 31, 31));
     }
   100% {
       transform: scale(1);
-      filter: drop-shadow(0 0 2rem rgb(44, 44, 44));
+      filter: drop-shadow(0 0 2rem rgb(31, 31, 31));
     }
 }
 
@@ -158,11 +160,11 @@ main {
   animation-name: win;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
-  filter: drop-shadow(0 0 2rem rgb(44, 44, 44));
+  filter: drop-shadow(0 0 2rem rgb(31, 31, 31));
 }
 
 .selectedImages {
-  width: 60%;
+  width: 70%;
   height: auto;
   margin-top: 1rem;
   opacity: 0.80;
@@ -175,6 +177,8 @@ main {
   background: #FFC700;
   border-radius: 40px 40px 40px 40px; 
   padding: 1rem;
+  margin: 0;
+  margin-top: 2rem
 }
 
 .scoreHeading {

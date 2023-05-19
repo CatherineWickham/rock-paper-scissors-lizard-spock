@@ -52,10 +52,10 @@
           <p>
             Scissors cuts Paper, Paper covers Rock, Rock crushes Lizard, Lizard
             poisons Spock, Spock smashes Scissors, Scissors decapitates Lizard,
-            Lizard eats Paper, Paper disproves Spock, Spock vaporizes Rock, and,
-            as it always has, Rock crushes Scissors
+            Lizard eats Paper, Paper disproves Spock, Spock vaporizes Rock, and
+            (as it always has) Rock crushes Scissors
           </p>
-          <p>~Dr Sheldon Cooper</p>
+          <p>~Dr Sheldon Cooper, <i>The Big Bang Theory</i></p>
         </div>
       </div>
       <button id="rulesClose" data-rules-close>Close</button>
@@ -63,6 +63,9 @@
 
     <main>
       <section id="menuPanel">
+        <h3>Status:</h3>
+        <div data-status id="status">Waiting for move</div>
+
         <div id="buttonsPanel">
           <h3>Choose your move:</h3>
           <div data-rock class="selectButton">Rock</div>
@@ -71,8 +74,6 @@
           <div data-lizard class="selectButton">Lizard</div>
           <div data-spock class="selectButton">Spock</div>
         </div>
-        <h3>Status:</h3>
-        <div data-status id="status">Waiting for move...</div>
       </section>
 
       <section id="player1Panel" class="playerPanel">
@@ -86,7 +87,7 @@
         </div>
 
         <div class="scoreBoard">
-          <h2 class="playerHeading">Player 1 (you)</h2>
+          <h2 class="playerHeading">Player 1</h2>
           <p class="scoreHeading">Score:</p>
           <p class="scoreValue" id="player1Score"></p>
         </div>
@@ -103,7 +104,7 @@
         </div>
 
         <div class="scoreBoard">
-          <h2 class="playerHeading">Player 2 (computer)</h2>
+          <h2 class="playerHeading">Player 2</h2>
           <p class="scoreHeading">Score:</p>
           <p class="scoreValue" id="player2Score"></p>
         </div>

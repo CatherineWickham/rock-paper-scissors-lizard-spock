@@ -47,7 +47,7 @@ const handleReset = () => {
     html.p1Image.classList.remove('selectedImagesWin')
     html.p2Image.classList.remove('selectedImagesWin')
 
-    html.status.textContent = "Waiting for move..."
+    html.status.textContent = "Waiting for move"
 }
 html.navButtons.reset.addEventListener("click", handleReset)
 
@@ -97,6 +97,8 @@ const runGame = (event) => {
     html.p1Image.setAttribute('src', `/images/p1${p1Selection}.png`)
     html.p2Image.setAttribute('src', `/images/p2${p2Selection}.png`)
 
+    let winningConditions = null
+
         switch (p1Selection) {
         case p2Selection:
             p1Wins = null;
@@ -145,30 +147,39 @@ const runGame = (event) => {
 
     html.p1Image.classList.remove('selectedImagesBouncing')
     html.p2Image.classList.remove('selectedImagesBouncing')
+
+    return p1Wins
 }
 
-const handleSelection = (event) => {
-    html.p1Image.classList.remove('selectedImagesWin')
-    html.p2Image.classList.remove('selectedImagesWin')
-    bounceAnimation()
-    setTimeout(runGame, 1700, event)
-    console.log(p1Wins) // not getting correct value for p1Wins
+const updateStatusPlaying = () => {
+    html.status.textContent = ". . ."
+}
+
+const updateStatusResult = () => {
     if(p1Wins === true) {
         html.status.textContent = "You Win!!!";
-        console.log("WON")
 
     } else if (p1Wins === false) {
         html.status.textContent = "You Lose";
-        console.log("LOST")
 
     } else {
         html.status.textContent = "It's a Draw";
-        console.log("DRAW")
     }
 }
 
-const handleStatusUpdatePlaying = () => {
-    html.status.textContent = "..."
+const handleSelection = (event) => {
+    updateStatusPlaying()
+
+    html.p1Image.setAttribute('src', `/images/p1starting.png`)
+    html.p2Image.setAttribute('src', `/images/p2starting.png`)
+
+    html.p1Image.classList.remove('selectedImagesWin')
+    html.p2Image.classList.remove('selectedImagesWin')
+
+    bounceAnimation()
+
+    setTimeout(runGame, 1700, event)
+    setTimeout(updateStatusResult, 1700)
 }
 
 
@@ -178,5 +189,4 @@ const buttonsArray = Array.from(document.querySelectorAll('.selectButton'))
     // loops over all selector buttons and applies event listener
     for (const button of buttonsArray){
         button.addEventListener('click', handleSelection)
-        button.addEventListener('click', handleStatusUpdatePlaying)
     }
