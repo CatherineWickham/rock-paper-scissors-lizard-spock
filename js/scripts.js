@@ -10,7 +10,8 @@ const html = {
     p2Image: document.querySelector('[data-p2-selected-image]'),
     player1Score: document.querySelector('#player1Score'),
     player2Score: document.querySelector('#player2Score'),
-    status: document.querySelector('#status')
+    status: document.querySelector('#status'),
+    buttonsArray: Array.from(document.querySelectorAll('.selectButton'))
 }
 
 // initialization of overall player scores, sets displayed values
@@ -22,6 +23,8 @@ html.player2Score.textContent = p2Score
 html.p1Image.setAttribute('src', `/images/p1starting.png`)
 html.p2Image.setAttribute('src', `/images/p2starting.png`)
 
+
+// all HTML elements with selectButton class are added to buttonsArray
 
 const handleOpenRules = () => {
     html.rulesOverlay.style.display = 'block'
@@ -48,6 +51,10 @@ const handleReset = () => {
     html.p2Image.classList.remove('selectedImagesWin')
 
     html.status.textContent = "Waiting for move"
+
+    for (const button of html.buttonsArray){
+        button.style.background = "#D9D9D9"
+    }
 }
 html.navButtons.reset.addEventListener("click", handleReset)
 
@@ -168,6 +175,12 @@ const updateStatusResult = () => {
 }
 
 const handleSelection = (event) => {
+    for (const button of html.buttonsArray){
+        button.style.background = "#D9D9D9"
+    }
+    const { target } = event
+    target.style.background = "rgba(255, 199, 0, 0.5)"
+    
     updateStatusPlaying()
 
     html.p1Image.setAttribute('src', `/images/p1starting.png`)
@@ -182,11 +195,7 @@ const handleSelection = (event) => {
     setTimeout(updateStatusResult, 1700)
 }
 
-
-// all HTML elements with selectButton class are added to buttonsArray
-const buttonsArray = Array.from(document.querySelectorAll('.selectButton'))
-
-    // loops over all selector buttons and applies event listener
-    for (const button of buttonsArray){
-        button.addEventListener('click', handleSelection)
-    }
+// loops over all selector buttons and applies event listener
+for (const button of html.buttonsArray){
+    button.addEventListener('click', handleSelection)
+}
