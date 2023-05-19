@@ -14,13 +14,14 @@ nav {
   position: fixed;
   width: 100%;
   align-items: center;
+  margin: 1rem;
 }
 
 .navButtonOuter {
   background: #FFC700;
   border-radius: 100%;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   margin: 0.3%;
   display: flex;
   align-items: center;
@@ -31,7 +32,7 @@ nav {
 .navButtonInner {
   text-decoration: none;
   color: rgb(44, 44, 44);
-  font-size: 1.3rem !important; 
+  font-size: 1.5rem !important; 
   padding-left:1%;
   padding-right:1%;
 }
@@ -56,8 +57,9 @@ header {
 main {
     display: flex;
     justify-content: space-evenly;
-    margin: 2rem;
-    margin-right: 2.5rem;
+    margin: 2.5rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
 }
 
 /* Menu Panel styling */
@@ -103,6 +105,8 @@ main {
   margin: 3rem;
   margin-top: 4rem;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes bounce {
@@ -139,15 +143,15 @@ main {
 @keyframes win {
   0% {
     transform: scale(1);
-    filter: drop-shadow(0 0 0rem rgb(31, 31, 31));
+    filter: drop-shadow(0 0 0rem #FFC700);
   }
   50% {
       transform: scale(1.2);
-      filter: drop-shadow(0 0 2rem rgb(31, 31, 31));
+      filter: drop-shadow(0 0 3rem #FFC700);
     }
   100% {
       transform: scale(1);
-      filter: drop-shadow(0 0 2rem rgb(31, 31, 31));
+      filter: drop-shadow(0 0 3rem #FFC700);
     }
 }
 
@@ -160,7 +164,7 @@ main {
   animation-name: win;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
-  filter: drop-shadow(0 0 2rem rgb(31, 31, 31));
+  filter: drop-shadow(0 0 3rem #FFC700);
 }
 
 .selectedImages {
@@ -171,6 +175,20 @@ main {
 }
 
 /* Scoreboard styling */
+
+.scoreBoard {
+  display: grid;
+  grid-template-areas:
+  "heading heading heading heading"
+  "score score score value";
+  grid-gap: 5%;
+  width: 75%;
+  align-self: center;
+  margin: 2%;
+  padding: 2%;
+  align-items: center;
+  height: 5%;
+}
 
 .playerHeading {
   grid-area: heading;
@@ -193,20 +211,6 @@ main {
   background: #D9D9D9;
   border-radius: 40px 40px 40px 40px;
   padding: 1rem; 
-}
-
-.scoreBoard {
-    display: grid;
-    grid-template-areas:
-    "heading heading heading heading"
-    "score score score value";
-    grid-gap: 5%;
-    width: 90%;
-    align-self: center;
-    margin: 2%;
-    padding: 2%;
-    align-items: center;
-    height: 5%;
 }
 
 /* Rules Overlay styling and animation */
@@ -247,4 +251,38 @@ main {
   background-color: rgba(255, 255, 255, 1);
   box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
     0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+}
+/* Footer styling */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#dividerLine {
+border-top: solid rgba(44, 44, 44, 0.5) 2px;
+width: 90%;
+}
+
+#iconsBox {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+  margin-top: 2rem;
+  width: 10%;
+}
+
+.icons {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 10%;
+  cursor: pointer;
+}
+
+#copyright {
+  align-self: center;
+  margin: 2rem;
 }
