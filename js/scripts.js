@@ -2,57 +2,80 @@
 const html = {
     navButtons: {
         rules: document.querySelector('[data-nav-rules]'),
-        reset: document.querySelector('[data-nav-reset]')
+        reset: document.querySelector('[data-nav-reset]'),
+        info: document.querySelector('[data-nav-info]'),
     },
-    rulesOverlay: document.querySelector('[data-rules-overlay]'),
-    rulesClose: document.querySelector('[data-rules-close]'),
-    p1Image: document.querySelector('[data-p1-selected-image]'),
-    p2Image: document.querySelector('[data-p2-selected-image]'),
-    player1Score: document.querySelector('#player1Score'),
-    player2Score: document.querySelector('#player2Score'),
-    status: document.querySelector('#status'),
-    buttonsArray: Array.from(document.querySelectorAll('.selectButton'))
+    rules: {
+        overlay: document.querySelector('[data-rules-overlay]'),
+        close: document.querySelector('[data-rules-close]'),
+    },
+    info: {
+        overlay: document.querySelector('[data-info-overlay]'),
+        close: document.querySelector('[data-info-close]'),
+
+    },
+    images: {
+        player1: document.querySelector('[data-p1-selected-image]'),
+        player2: document.querySelector('[data-p2-selected-image]'),
+    },
+    scores: {
+        player1: document.querySelector('#player1Score'),
+        player2: document.querySelector('#player2Score'),
+    },
+    menu: {
+        status: document.querySelector('#status'),
+        buttonsArray: Array.from(document.querySelectorAll('.selectButton')), // all HTML elements with selectButton class are added to buttonsArray
+    },
+    secretConfettiButton: document.querySelector('#secretConfettiButton'),
 }
 
 // initialization of overall player scores, sets displayed values
 let p1Score = 0
-html.player1Score.textContent = p1Score
+html.scores.player1.textContent = p1Score
 let p2Score = 0
-html.player2Score.textContent = p2Score
+html.scores.player2.textContent = p2Score
 
-html.p1Image.setAttribute('src', `/images/p1starting.png`)
-html.p2Image.setAttribute('src', `/images/p2starting.png`)
+html.images.player1.setAttribute('src', `/images/p1starting.png`)
+html.images.player2.setAttribute('src', `/images/p2starting.png`)
 
-
-// all HTML elements with selectButton class are added to buttonsArray
 
 const handleOpenRules = () => {
-    html.rulesOverlay.style.display = 'block'
+    html.rules.overlay.style.display = 'block'
 }
 html.navButtons.rules.addEventListener("click", handleOpenRules)
 
-
 const handleCloseRules = () => {
-    html.rulesOverlay.style.display = 'none'
+    html.rules.overlay.style.display = 'none'
 }
-html.rulesClose.addEventListener("click", handleCloseRules)
+html.rules.close.addEventListener("click", handleCloseRules)
+
+
+const handleOpenInfo = () => {
+    html.info.overlay.style.display = 'block'
+}
+html.navButtons.info.addEventListener("click", handleOpenInfo)
+
+const handleCloseInfo = () => {
+    html.info.overlay.style.display = 'none'
+}
+html.info.close.addEventListener("click", handleCloseInfo)
 
 
 const handleReset = () => {
     p1Score = 0
-    html.player1Score.textContent = p1Score
+    html.scores.player1.textContent = p1Score
     p2Score = 0
-    html.player2Score.textContent = p2Score
+    html.scores.player2.textContent = p2Score
 
-    html.p1Image.setAttribute('src', `/images/p1starting.png`)
-    html.p2Image.setAttribute('src', `/images/p2starting.png`)
+    html.images.player1.setAttribute('src', `/images/p1starting.png`)
+    html.images.player2.setAttribute('src', `/images/p2starting.png`)
 
-    html.p1Image.classList.remove('selectedImagesWin')
-    html.p2Image.classList.remove('selectedImagesWin')
+    html.images.player1.classList.remove('selectedImagesWin')
+    html.images.player2.classList.remove('selectedImagesWin')
 
-    html.status.textContent = "Waiting for move"
+    html.menu.status.textContent = "Waiting for move"
 
-    for (const button of html.buttonsArray){
+    for (const button of html.menu.buttonsArray){
         button.style.background = "#D9D9D9"
     }
 }
@@ -60,8 +83,8 @@ html.navButtons.reset.addEventListener("click", handleReset)
 
 
 const bounceAnimation = () => {
-    html.p1Image.classList.add('selectedImagesBouncing')
-    html.p2Image.classList.add('selectedImagesBouncing')
+    html.images.player1.classList.add('selectedImagesBouncing')
+    html.images.player2.classList.add('selectedImagesBouncing')
 }
 
 // confetti function
@@ -91,7 +114,7 @@ const defaults = {
     });
   }
 
-  // needs to be initialized outside of function so it can be accessed later
+// needs to be initialized outside of function so it can be accessed later
 let p1Wins = null
 
 const runGame = (event) => {
@@ -101,8 +124,8 @@ const runGame = (event) => {
     const p2Options = ['rock', 'paper', 'scissors', 'lizard', 'spock']
     const p2Selection = p2Options[Math.floor(Math.random()*5)]
 
-    html.p1Image.setAttribute('src', `/images/p1${p1Selection}.png`)
-    html.p2Image.setAttribute('src', `/images/p2${p2Selection}.png`)
+    html.images.player1.setAttribute('src', `/images/p1${p1Selection}.png`)
+    html.images.player2.setAttribute('src', `/images/p2${p2Selection}.png`)
 
     let winningConditions = null
 
@@ -135,8 +158,8 @@ const runGame = (event) => {
 
     if(p1Wins === true) {
         p1Score = p1Score + 1;
-        html.player1Score.textContent = p1Score;
-        html.p1Image.classList.add('selectedImagesWin')
+        html.scores.player1.textContent = p1Score;
+        html.images.player1.classList.add('selectedImagesWin')
           
           setTimeout(shoot, 0);
           setTimeout(shoot, 100);
@@ -144,38 +167,38 @@ const runGame = (event) => {
 
     } else if (p1Wins === false) {
         p2Score = p2Score + 1;
-        html.player2Score.textContent = p2Score;
-        html.p2Image.classList.add('selectedImagesWin')
+        html.scores.player2.textContent = p2Score;
+        html.images.player2.classList.add('selectedImagesWin')
 
     } else {
-        html.p1Image.classList.add('selectedImagesWin')
-        html.p2Image.classList.add('selectedImagesWin')
+        html.images.player1.classList.add('selectedImagesWin')
+        html.images.player2.classList.add('selectedImagesWin')
     }
 
-    html.p1Image.classList.remove('selectedImagesBouncing')
-    html.p2Image.classList.remove('selectedImagesBouncing')
+    html.images.player1.classList.remove('selectedImagesBouncing')
+    html.images.player2.classList.remove('selectedImagesBouncing')
 
     return p1Wins
 }
 
 const updateStatusPlaying = () => {
-    html.status.textContent = ". . ."
+    html.menu.status.textContent = ". . ."
 }
 
 const updateStatusResult = () => {
     if(p1Wins === true) {
-        html.status.textContent = "You Win!!!";
+        html.menu.status.textContent = "You Win!!!";
 
     } else if (p1Wins === false) {
-        html.status.textContent = "You Lose";
+        html.menu.status.textContent = "You Lose";
 
     } else {
-        html.status.textContent = "It's a Draw";
+        html.menu.status.textContent = "It's a Draw";
     }
 }
 
 const handleSelection = (event) => {
-    for (const button of html.buttonsArray){
+    for (const button of html.menu.buttonsArray){
         button.style.background = "#D9D9D9"
     }
     const { target } = event
@@ -183,11 +206,11 @@ const handleSelection = (event) => {
     
     updateStatusPlaying()
 
-    html.p1Image.setAttribute('src', `/images/p1starting.png`)
-    html.p2Image.setAttribute('src', `/images/p2starting.png`)
+    html.images.player1.setAttribute('src', `/images/p1starting.png`)
+    html.images.player2.setAttribute('src', `/images/p2starting.png`)
 
-    html.p1Image.classList.remove('selectedImagesWin')
-    html.p2Image.classList.remove('selectedImagesWin')
+    html.images.player1.classList.remove('selectedImagesWin')
+    html.images.player2.classList.remove('selectedImagesWin')
 
     bounceAnimation()
 
@@ -196,6 +219,16 @@ const handleSelection = (event) => {
 }
 
 // loops over all selector buttons and applies event listener
-for (const button of html.buttonsArray){
+for (const button of html.menu.buttonsArray){
     button.addEventListener('click', handleSelection)
 }
+
+const handleSecretConfetti = () => {
+    setTimeout(shoot, 0);
+    setTimeout(shoot, 100);
+    setTimeout(shoot, 150);
+    setTimeout(shoot, 200);
+    setTimeout(shoot, 250);
+    setTimeout(shoot, 260);
+}
+html.secretConfettiButton.addEventListener('click', handleSecretConfetti)

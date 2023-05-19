@@ -35,8 +35,8 @@
         <i class="fa fa-question navButtonInner" aria-hidden="true"></i>
       </div>
 
-      <div data-nav-about class="navButtonOuter" title="Info">
-        <i class="fa fa-exclamation navButtonInner" aria-hidden="true"></i>
+      <div data-nav-info class="navButtonOuter" title="Info">
+        <i class="fa fa-info navButtonInner" aria-hidden="true"></i>
       </div>
     </nav>
 
@@ -55,10 +55,25 @@
             Lizard eats Paper, Paper disproves Spock, Spock vaporizes Rock, and
             (as it always has) Rock crushes Scissors
           </p>
-          <p>~Dr Sheldon Cooper, <i>The Big Bang Theory</i></p>
+          <p>~Dr Sheldon Cooper</p>
         </div>
       </div>
-      <button id="rulesClose" data-rules-close>Close</button>
+      <button class="closeButton" data-rules-close>Close</button>
+    </dialog>
+
+    <dialog id="infoOverlay" data-info-overlay>
+      <h2>Project Info:</h2>
+      <div id="infoText">
+        <p>
+          This is a personal portfolio project to demonstrate my coding skills.
+        </p>
+        <p>
+          The concept for the Rock Paper Scissors Lizard Spock game comes from
+          the CBS TV series <i>The Big Bang Theory</i>
+        </p>
+      </div>
+
+      <button class="closeButton" data-info-close>Close</button>
     </dialog>
 
     <main>
@@ -137,7 +152,14 @@
           ><i class="fa fa-github" aria-hidden="true"></i>
         </a>
       </div>
-      <div id="copyright">© Catherine Wickham 2023</div>
+      <div id="copyright">
+        © Catherine Wickham 2023
+        <i
+          id="secretConfettiButton"
+          class="fa fa-star-o"
+          aria-hidden="true"
+        ></i>
+      </div>
     </footer>
   </body>
 </html>
