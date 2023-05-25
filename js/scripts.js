@@ -47,8 +47,8 @@ let p2Score = 0
 html.scores.player2.textContent = p2Score
 
 // The starting images in each player's panel are set to a neutral fist
-html.images.player1.setAttribute('src', `/images/p1starting.png`)
-html.images.player2.setAttribute('src', `/images/p2starting.png`)
+html.images.player1.setAttribute('src', `https://catherinewickham.co.za/projects/rpsls/images/p1starting.png`)
+html.images.player2.setAttribute('src', `https://catherinewickham.co.za/projects/rpsls/images/p2starting.png`)
 
 /** 
  * A Boolean value indicating if the user (player 1) has won (true) or not (false)
@@ -153,8 +153,8 @@ const handleReset = () => {
     html.scores.player2.textContent = p2Score
 
     // Images in the players panel are reset to starting images
-    html.images.player1.setAttribute('src', `/images/p1starting.png`)
-    html.images.player2.setAttribute('src', `/images/p2starting.png`)
+    html.images.player1.setAttribute('src', `https://catherinewickham.co.za/projects/rpsls/images/p1starting.png`)
+    html.images.player2.setAttribute('src', `https://catherinewickham.co.za/projects/rpsls/images/p2starting.png`)
 
     // Styling applied on the image in the winning player's panel is removed
     html.images.player1.classList.remove('selectedImagesWin')
@@ -219,8 +219,8 @@ const runGame = (event) => {
     const p2Selection = p2Options[Math.floor(Math.random()*5)]
 
     // updates the images in the player's panels according to their selections
-    html.images.player1.setAttribute('src', `/images/p1${p1Selection}.png`)
-    html.images.player2.setAttribute('src', `/images/p2${p2Selection}.png`)
+    html.images.player1.setAttribute('src', `https://catherinewickham.co.za/projects/rpsls/images/p1${p1Selection}.png`)
+    html.images.player2.setAttribute('src', `https://catherinewickham.co.za/projects/rpsls/images/p2${p2Selection}.png`)
 
     /** 
     * winningConditions array stores the options that player 2 could have selected that
@@ -321,8 +321,8 @@ const handleSelection = (event) => {
     html.images.player2.classList.remove('selectedImagesWin')
 
     // sets player images to starting defaults
-    html.images.player1.setAttribute('src', `/images/p1starting.png`)
-    html.images.player2.setAttribute('src', `/images/p2starting.png`)
+    html.images.player1.setAttribute('src', `https://catherinewickham.co.za/projects/rpsls/images/p1starting.png`)
+    html.images.player2.setAttribute('src', `https://catherinewickham.co.za/projects/rpsls/images/p2starting.png`)
 
     // shows visual cues to indicate game in progress 
     updateStatusPlaying()
